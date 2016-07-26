@@ -13,6 +13,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var ISBN: UITextField!
     
+    var arrCol = [[String:String]]()
+    
     func imprime()->String{
         let IsbnNumber=String(self.ISBN.text!)
         
@@ -21,7 +23,7 @@ class ViewController: UIViewController {
     
     func busqueda() {
         let IsbnNumberR = imprime()
-        let urls="https://openlibrary.org/api/books?jscmd=dat&format=json&bibkeys=ISBN:" + IsbnNumberR
+        let urls="https://openlibrary.org/api/books?jscmd=data&format=json&bibkeys=ISBN:" + IsbnNumberR
         let url = NSURL(string: urls)
         let datos:NSData? = NSData(contentsOfURL: url!)
         
@@ -40,11 +42,31 @@ class ViewController: UIViewController {
             self.presentViewController(alert, animated: true, completion: nil)
         }
         else {
-            
-            RESULTADO.text=String(texto!)}
-        }}
+                
+                do {
+                    let json = try NSJSONSerialization.JSONObjectWithData(datos!, options: NSJSONReadingOptions.MutableLeaves)
+                    
+                    let dico1 = json as! NSDictionary
+                 
+                    let dico2 = dico1["ISBN:"+IsbnNumberR] as! NSDictionary
+                    
+                    self.titulo.text = dico2["title"] as! NSString as String
+                    self.autor.text = dico2["by_statement"] as! NSString as String
+                    self.portada.text = dico2["url"] as! NSString as String
+                }
+                    
+                catch _ {
+                    
+                }
+                
+            }}}
+   
     
-    @IBOutlet weak var RESULTADO: UITextView!
+    
+    @IBOutlet weak var titulo: UILabel!
+    @IBOutlet weak var autor: UILabel!
+    @IBOutlet weak var portada: UILabel!
+    
     
     @IBAction func ISBN(sender: AnyObject) {
         imprime()
