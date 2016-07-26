@@ -44,6 +44,9 @@ class ViewController: UIViewController {
         else {
                 
                 do {
+                    
+                    var arreglo: [String] = []
+                    
                     let json = try NSJSONSerialization.JSONObjectWithData(datos!, options: NSJSONReadingOptions.MutableLeaves)
                     
                     let dico1 = json as! NSDictionary
@@ -51,7 +54,15 @@ class ViewController: UIViewController {
                     let dico2 = dico1["ISBN:"+IsbnNumberR] as! NSDictionary
                     
                     self.titulo.text = dico2["title"] as! NSString as String
-                    self.autor.text = dico2["by_statement"] as! NSString as String
+                    
+                    let autores =  dico2["authors"] as! NSArray
+                    for autor in autores
+                    {
+                        arreglo.append(autor["name"] as! NSString as String)
+                    }
+                    
+                    let arrautor = Autores(arreglo)
+                    self.autor.text = arrautor
                     self.portada.text = dico2["url"] as! NSString as String
                 }
                     
@@ -60,8 +71,23 @@ class ViewController: UIViewController {
                 }
                 
             }}}
-   
     
+    func Autores(arreglo: [String]) -> String
+    {
+        var autores: String = ""
+        
+        if (arreglo.count == 1){
+            
+            return arreglo[0]
+        }
+        else
+        {
+            
+            
+            autores = arreglo.joinWithSeparator("-")
+            return autores
+        }
+    }
     
     @IBOutlet weak var titulo: UILabel!
     @IBOutlet weak var autor: UILabel!
