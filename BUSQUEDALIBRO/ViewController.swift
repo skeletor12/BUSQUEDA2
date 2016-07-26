@@ -13,8 +13,6 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var ISBN: UITextField!
     
-    var arrCol = [[String:String]]()
-    
     func imprime()->String{
         let IsbnNumber=String(self.ISBN.text!)
         
@@ -82,8 +80,6 @@ class ViewController: UIViewController {
         }
         else
         {
-            
-            
             autores = arreglo.joinWithSeparator("-")
             return autores
         }
