@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE0020E31D4DE6C800988BA8 /* url.png in Resources */ = {isa = PBXBuildFile; fileRef = EE0020E21D4DE6C800988BA8 /* url.png */; };
 		EEB6594E1D446F9D006F8143 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB6594D1D446F9D006F8143 /* AppDelegate.swift */; };
 		EEB659501D446F9D006F8143 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB6594F1D446F9D006F8143 /* ViewController.swift */; };
 		EEB659531D446F9D006F8143 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEB659511D446F9D006F8143 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE0020E21D4DE6C800988BA8 /* url.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = url.png; sourceTree = "<group>"; };
 		EEB6594A1D446F9D006F8143 /* BUSQUEDALIBRO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BUSQUEDALIBRO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEB6594D1D446F9D006F8143 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEB6594F1D446F9D006F8143 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 		EEB6594C1D446F9D006F8143 /* BUSQUEDALIBRO */ = {
 			isa = PBXGroup;
 			children = (
+				EE0020E21D4DE6C800988BA8 /* url.png */,
 				EEB6594D1D446F9D006F8143 /* AppDelegate.swift */,
 				EEB6594F1D446F9D006F8143 /* ViewController.swift */,
 				EEB659511D446F9D006F8143 /* Main.storyboard */,
@@ -124,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEB659581D446F9D006F8143 /* LaunchScreen.storyboard in Resources */,
+				EE0020E31D4DE6C800988BA8 /* url.png in Resources */,
 				EEB659551D446F9D006F8143 /* Assets.xcassets in Resources */,
 				EEB659531D446F9D006F8143 /* Main.storyboard in Resources */,
 			);
@@ -291,6 +295,7 @@
 				EEB6595E1D446F9D006F8143 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

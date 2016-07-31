@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         let IsbnNumberR = imprime()
         let urls="https://openlibrary.org/api/books?jscmd=data&format=json&bibkeys=ISBN:" + IsbnNumberR
         let url = NSURL(string: urls)
-        let datos:NSData? = NSData(contentsOfURL: url!)
+        let datos: NSData? = NSData(contentsOfURL: url!)
         
         if datos == nil {
             let alert = UIAlertController(title: "Aviso", message: "CONEXION FALLIDA", preferredStyle: UIAlertControllerStyle.Alert)
@@ -46,10 +46,11 @@ class ViewController: UIViewController {
                     var arreglo: [String] = []
                     
                     let json = try NSJSONSerialization.JSONObjectWithData(datos!, options: NSJSONReadingOptions.MutableLeaves)
-                    
+               
                     let dico1 = json as! NSDictionary
-                 
-                    let dico2 = dico1["ISBN:"+IsbnNumberR] as! NSDictionary
+                    
+                   let dico2 = dico1["ISBN:"+IsbnNumberR] as! NSDictionary
+                    
                     
                     self.titulo.text = dico2["title"] as! NSString as String
                     
@@ -61,7 +62,22 @@ class ViewController: UIViewController {
                     
                     let arrautor = Autores(arreglo)
                     self.autor.text = arrautor
-                    self.portada.text = dico2["url"] as! NSString as String
+                  
+                    let busqueda = dico2.objectForKey("cover")
+                    
+                    print (busqueda)
+                    
+                    if busqueda != nil {
+                   
+                   let dico3 = dico2["cover"] as! NSDictionary
+                    let dico4 = dico3["large"] as! NSString as String
+                    let cover = NSURL(string: dico4)
+                    let coverL:NSData? = NSData(contentsOfURL: cover!)
+                    portada.image = UIImage(data: coverL!)
+                    } else {
+                     portada.image = UIImage(named: "url.png")
+                        
+                    }
                 }
                     
                 catch _ {
@@ -87,7 +103,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var titulo: UILabel!
     @IBOutlet weak var autor: UILabel!
-    @IBOutlet weak var portada: UILabel!
+    @IBOutlet weak var portada: UIImageView!
+
     
     
     @IBAction func ISBN(sender: AnyObject) {
