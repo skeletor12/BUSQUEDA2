@@ -106,6 +106,14 @@ class ViewController: UIViewController {
         imprime()
         busqueda()
     }
+    
+    @IBAction func limpiar(sender: AnyObject) {
+        self.autor.text = ""
+        self.portada.image = UIImage()
+        self.titulo.text = ""
+        self.ISBN.text = ""
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
