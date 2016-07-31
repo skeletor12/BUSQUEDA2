@@ -46,11 +46,8 @@ class ViewController: UIViewController {
                     var arreglo: [String] = []
                     
                     let json = try NSJSONSerialization.JSONObjectWithData(datos!, options: NSJSONReadingOptions.MutableLeaves)
-               
                     let dico1 = json as! NSDictionary
-                    
                    let dico2 = dico1["ISBN:"+IsbnNumberR] as! NSDictionary
-                    
                     
                     self.titulo.text = dico2["title"] as! NSString as String
                     
@@ -64,8 +61,6 @@ class ViewController: UIViewController {
                     self.autor.text = arrautor
                   
                     let busqueda = dico2.objectForKey("cover")
-                    
-                    print (busqueda)
                     
                     if busqueda != nil {
                    
